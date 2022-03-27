@@ -33,6 +33,7 @@ class MyApps extends StatelessWidget {
       ),
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
+        scaffoldBackgroundColor: const Color.fromARGB(242, 193, 253, 141),
       ),
     );
   }

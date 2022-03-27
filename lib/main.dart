@@ -29,7 +29,7 @@ class MyApps extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Flutter Demo'),
         ),
-        body: const MyImage(),
+        body: const HomeContent(),
       ),
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
@@ -39,35 +39,61 @@ class MyApps extends StatelessWidget {
   }
 }
 
-class MyImage extends StatelessWidget {
-  const MyImage({Key? key}) : super(key: key);
+class HomeContent extends StatelessWidget {
+  const HomeContent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: ClipOval(
-        // child: Image.asset(
-        //   'assets/images/apple.jpeg',
-        child: Image(
-          image: const AssetImage('assets/images/apple.jpeg'),
-          width: 300,
-          height: 300,
-          fit: BoxFit.cover,
-          errorBuilder: (context, error, stackTrace) {
-            return Container(
-              color: Colors.amber,
-              alignment: Alignment.center,
-              width: 300,
-              height: 300,
-              child: const Text(
-                'Whoops!',
-                style: TextStyle(fontSize: 30),
-              ),
-            );
-          },
+    return ListView(
+      padding: const EdgeInsets.all(10),
+      children: <Widget>[
+        const ListTile(
+          leading: Icon(
+            Icons.home,
+            color: Colors.red,
+          ),
+          title: Text(
+            'hello one',
+            style: TextStyle(
+              color: Colors.redAccent,
+              fontSize: 26,
+            ),
+          ),
+          subtitle: Text('hell world 111'),
+          textColor: Colors.brown,
         ),
-      ),
+        ListTile(
+          leading: Image.network(
+            'https://cdn-icons-png.flaticon.com/512/1160/1160157.png',
+            fit: BoxFit.cover,
+          ),
+          title: const Text('hello two'),
+          subtitle: const Text('hell world 222'),
+        ),
+        Container(
+          child: const Text(
+            '我的小老虎',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 28,
+              color: Colors.white60,
+            ),
+          ),
+          height: 70,
+          padding: const EdgeInsets.all(15),
+          color: Colors.green,
+        ),
+        Image.network(
+          'https://cdn-icons-png.flaticon.com/512/4193/4193303.png',
+          height: 200,
+          fit: BoxFit.fitHeight,
+        ),
+        Image.network(
+          'https://cdn-icons-png.flaticon.com/512/4193/4193288.png',
+          height: 200,
+          fit: BoxFit.fitHeight,
+        ),
+      ],
     );
   }
 }

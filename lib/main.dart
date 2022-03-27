@@ -44,56 +44,49 @@ class HomeContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.all(10),
-      children: <Widget>[
-        const ListTile(
-          leading: Icon(
-            Icons.home,
+    return SizedBox(
+      height: 300,
+      child: ListView(
+        padding: const EdgeInsets.all(10),
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+          Container(
+            width: 100,
             color: Colors.red,
           ),
-          title: Text(
-            'hello one',
-            style: TextStyle(
-              color: Colors.redAccent,
-              fontSize: 26,
+          Container(
+            width: 200,
+            color: Colors.yellow,
+            child: ListView(
+              padding: const EdgeInsets.all(20),
+              children: [
+                Image.network(
+                  'https://cdn-icons-png.flaticon.com/512/4193/4193288.png',
+                  height: 100,
+                  fit: BoxFit.fitHeight,
+                ),
+                const Text(
+                  'Panda',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.deepPurple,
+                    fontSize: 18,
+                  ),
+                ),
+                Image.network(
+                  'https://cdn-icons-png.flaticon.com/512/4193/4193310.png',
+                  height: 100,
+                  fit: BoxFit.fitHeight,
+                ),
+              ],
             ),
           ),
-          subtitle: Text('hell world 111'),
-          textColor: Colors.brown,
-        ),
-        ListTile(
-          leading: Image.network(
-            'https://cdn-icons-png.flaticon.com/512/1160/1160157.png',
-            fit: BoxFit.cover,
+          Container(
+            width: 100,
+            color: Colors.blue,
           ),
-          title: const Text('hello two'),
-          subtitle: const Text('hell world 222'),
-        ),
-        Container(
-          child: const Text(
-            '我的小老虎',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 28,
-              color: Colors.white60,
-            ),
-          ),
-          height: 70,
-          padding: const EdgeInsets.all(15),
-          color: Colors.green,
-        ),
-        Image.network(
-          'https://cdn-icons-png.flaticon.com/512/4193/4193303.png',
-          height: 200,
-          fit: BoxFit.fitHeight,
-        ),
-        Image.network(
-          'https://cdn-icons-png.flaticon.com/512/4193/4193288.png',
-          height: 200,
-          fit: BoxFit.fitHeight,
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

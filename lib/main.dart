@@ -46,8 +46,10 @@ class MyImage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: ClipOval(
-        child: Image.network(
-          'http://www.news.cn/photo/2022-03/25/1128501151_16481677708721n.jpg',
+        // child: Image.asset(
+        //   'assets/images/apple.jpeg',
+        child: Image(
+          image: const AssetImage('assets/images/apple.jpeg'),
           width: 300,
           height: 300,
           fit: BoxFit.cover,
@@ -55,6 +57,8 @@ class MyImage extends StatelessWidget {
             return Container(
               color: Colors.amber,
               alignment: Alignment.center,
+              width: 300,
+              height: 300,
               child: const Text(
                 'Whoops!',
                 style: TextStyle(fontSize: 30),

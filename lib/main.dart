@@ -45,11 +45,11 @@ class MyImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
-      child: SizedBox(
-        width: double.infinity,
-        height: 300,
+      child: ClipOval(
         child: Image.network(
-          'http://www.news.cn/photo/2022-03/25/1128501151_16481677708721n.jpg', // this image doesn't exist
+          'http://www.news.cn/photo/2022-03/25/1128501151_16481677708721n.jpg',
+          width: 300,
+          height: 300,
           fit: BoxFit.cover,
           errorBuilder: (context, error, stackTrace) {
             return Container(

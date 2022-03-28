@@ -24,6 +24,7 @@ class MyApps extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false, // 隐藏debug
       title: 'Learn Flutter',
       home: Scaffold(
         appBar: AppBar(

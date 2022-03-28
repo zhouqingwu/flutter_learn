@@ -57,8 +57,12 @@ class HomeContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: _getData(),
+    List<Widget> list = _getData();
+    return ListView.builder(
+      itemCount: list.length - 1,
+      itemBuilder: (context, index) {
+        return list[index];
+      },
     );
   }
 }

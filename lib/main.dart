@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'src/settings/settings_controller.dart';
 import 'src/settings/settings_service.dart';
+import 'res/list_data.dart';
 
 void main() async {
   // Set up the SettingsController, which will glue user settings to multiple
@@ -44,17 +45,14 @@ class HomeContent extends StatelessWidget {
   const HomeContent({Key? key}) : super(key: key);
 
   List<Widget> _getData(int count) {
-    List<Widget> list = <Widget>[];
-    for (var i = 1; i <= count; i++) {
-      list.add(
-        ListTile(
-          title: Text('I am $i List'),
-          subtitle: Text('I am $i subtitle'),
-        ),
+    var tempListData = listData.map((value) {
+      return ListTile(
+        title: Text(value['title']),
+        subtitle: Text(value['number']),
+        leading: Image.network(value['image_url']),
       );
-    }
-
-    return list;
+    });
+    return tempListData.toList(); //转换成List
   }
 
   @override

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'src/settings/settings_controller.dart';
 import 'src/settings/settings_service.dart';
@@ -44,25 +46,19 @@ class MyApps extends StatelessWidget {
 class HomeContent extends StatelessWidget {
   const HomeContent({Key? key}) : super(key: key);
 
-  List<Widget> _getData() {
-    var tempListData = listData.map((value) {
-      return ListTile(
-        title: Text(value['title']),
-        subtitle: Text(value['number']),
-        leading: Image.network(value['image_url']),
-      );
-    });
-    return tempListData.toList(); //转换成List
+  Widget _getListData(context, index) {
+    return ListTile(
+      title: Text(listData[index]['title']),
+      subtitle: Text(listData[index]['number']),
+      leading: Image.network(listData[index]['image_url']),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> list = _getData();
     return ListView.builder(
-      itemCount: list.length - 1,
-      itemBuilder: (context, index) {
-        return list[index];
-      },
+      itemCount: listData.length,
+      itemBuilder: _getListData, //赋值引用而不是调用, 所以不用加参数
     );
   }
 }

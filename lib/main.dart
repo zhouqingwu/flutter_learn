@@ -43,27 +43,24 @@ class MyApps extends StatelessWidget {
 class HomeContent extends StatelessWidget {
   const HomeContent({Key? key}) : super(key: key);
 
-  List<Widget> _getData() {
-    return const [
-      ListTile(
-        title: Text('I am a List'),
-        subtitle: Text('I am a subtitle'),
-      ),
-      ListTile(
-        title: Text('I am two List'),
-        subtitle: Text('I am a subtitle'),
-      ),
-      ListTile(
-        title: Text('I am three List'),
-        subtitle: Text('I am a subtitle'),
-      )
-    ];
+  List<Widget> _getData(int count) {
+    List<Widget> list = <Widget>[];
+    for (var i = 1; i <= count; i++) {
+      list.add(
+        ListTile(
+          title: Text('I am $i List'),
+          subtitle: Text('I am $i subtitle'),
+        ),
+      );
+    }
+
+    return list;
   }
 
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: _getData(),
+      children: _getData(9),
     );
   }
 }

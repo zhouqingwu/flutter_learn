@@ -46,8 +46,8 @@ class MyApps extends StatelessWidget {
 class HomeContent extends StatelessWidget {
   const HomeContent({Key? key}) : super(key: key);
 
-  List<Widget> _getListData() {
-    var tempList = listData.map((value) => Container(
+  Widget _getListData(context, index) {
+    return Container(
           decoration: BoxDecoration(
             color: Colors.limeAccent,
             border: Border.all(
@@ -61,11 +61,11 @@ class HomeContent extends StatelessWidget {
                 height: 20, //间距
               ),
               Image.network(
-                value['image_url'],
+            listData[index]['image_url'],
                 width: 100,
               ),
               Text(
-                value['title'],
+            listData[index]['title'],
                 style: const TextStyle(
                   color: Colors.amber,
                   fontSize: 20,
@@ -73,18 +73,19 @@ class HomeContent extends StatelessWidget {
               ),
             ],
           ),
-        ));
-    return tempList.toList();
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 2,
-      crossAxisSpacing: 10.0, //左右间距
-      mainAxisSpacing: 10.0, //主轴间距，上下
-      padding: const EdgeInsets.all(10.0),
-      children: _getListData(),
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 5,
+        crossAxisSpacing: 5,
+      ),
+      itemCount: listData.length,
+      itemBuilder: _getListData,
     );
   }
 }

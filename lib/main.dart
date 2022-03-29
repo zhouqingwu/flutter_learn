@@ -46,19 +46,45 @@ class MyApps extends StatelessWidget {
 class HomeContent extends StatelessWidget {
   const HomeContent({Key? key}) : super(key: key);
 
-  Widget _getListData(context, index) {
-    return ListTile(
-      title: Text(listData[index]['title']),
-      subtitle: Text(listData[index]['number']),
-      leading: Image.network(listData[index]['image_url']),
-    );
+  List<Widget> _getListData() {
+    var tempList = listData.map((value) => Container(
+          decoration: BoxDecoration(
+            color: Colors.limeAccent,
+            border: Border.all(
+              color: Colors.red,
+              width: 5,
+            ),
+          ),
+          child: Column(
+            children: <Widget>[
+              const SizedBox(
+                height: 20, //间距
+              ),
+              Image.network(
+                value['image_url'],
+                width: 100,
+              ),
+              Text(
+                value['title'],
+                style: const TextStyle(
+                  color: Colors.amber,
+                  fontSize: 20,
+                ),
+              ),
+            ],
+          ),
+        ));
+    return tempList.toList();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: listData.length,
-      itemBuilder: _getListData, //赋值引用而不是调用, 所以不用加参数
+    return GridView.count(
+      crossAxisCount: 2,
+      crossAxisSpacing: 10.0, //左右间距
+      mainAxisSpacing: 10.0, //主轴间距，上下
+      padding: const EdgeInsets.all(10.0),
+      children: _getListData(),
     );
   }
 }

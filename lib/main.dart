@@ -49,55 +49,37 @@ class HomeContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: [
-        Card(
-          color: Colors.yellow,
+      children: listData.map((value) {
+        return Card(
           margin: const EdgeInsets.all(10),
           child: Column(
             children: [
               AspectRatio(
-                aspectRatio: 16 / 9,
-                child: Image.network(getImage(1), fit: BoxFit.cover),
-              ),
-              ListTile(
-                leading: ClipOval(
-                  child: Image.network(
-                    getImage(1),
-                    height: 38,
-                    width: 38,
-                    fit: BoxFit.cover,
-                  ),
+                aspectRatio: 1,
+                child: Image.network(
+                  value['image_url'],
+                  fit: BoxFit.cover,
                 ),
-                title: const Text(
-                  "张三",
-                  style: TextStyle(color: Colors.blueGrey),
-                ),
-                subtitle: const Text('程序员'),
-              ),
-              const ListTile(title: Text('电话：XXXXXXXX')),
-            ],
-          ),
-        ),
-        Card(
-          margin: const EdgeInsets.all(10),
-          child: Column(
-            children: [
-              AspectRatio(
-                aspectRatio: 16 / 9,
-                child: Image.network(getImage(2), fit: BoxFit.cover),
               ),
               ListTile(
                 leading: CircleAvatar(
-                  backgroundImage: NetworkImage(getImage(2)),
+                  backgroundImage: NetworkImage(value['image_url']),
+                  backgroundColor: Colors.blue,
                 ),
-                title: const Text("里斯"),
-                subtitle: const Text('销售'),
+                title: Text(value['title']),
+                subtitle: Text(value['number']),
               ),
-              const ListTile(title: Text('电话：XXXXXXXX')),
+              ListTile(
+                title: Text(
+                  value['image_url'],
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                ),
+              ),
             ],
           ),
-        )
-      ],
+        );
+      }).toList(),
     );
   }
 }

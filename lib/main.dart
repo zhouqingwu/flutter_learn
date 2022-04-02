@@ -50,10 +50,15 @@ class IconRow extends StatelessWidget {
   Widget build(BuildContext context) {
     //or Column
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
       children: const [
-        IconContainer(Icons.home, color: Colors.red),
-        IconContainer(Icons.list, color: Colors.yellow),
+        Expanded(
+          flex: 2,
+          child: IconContainer(Icons.home, color: Colors.red),
+        ),
+        Expanded(
+          flex: 1,
+          child: IconContainer(Icons.list, color: Colors.yellow),
+        ),
         IconContainer(Icons.settings, color: Colors.blue),
       ],
     );

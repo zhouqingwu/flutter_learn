@@ -48,37 +48,36 @@ class HomeContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 300,
-      width: 200,
-      color: Colors.lightBlueAccent,
-      padding: const EdgeInsets.all(20),
-      margin: const EdgeInsets.all(20),
-      child: Stack(
-        children: const [
-          Align(
-            child: Icon(Icons.settings, color: Colors.yellow, size: 35.0),
-            alignment: Alignment.topCenter,
-          ),
-          Align(
-            child: Icon(Icons.search_sharp, color: Colors.white, size: 35.0),
-            alignment: Alignment(1, -1),
-          ),
-          Align(
-            child: Icon(Icons.mobile_friendly, color: Colors.red, size: 55.0),
-            alignment: Alignment(0, 0),
-          ),
-          Positioned(
-            child: Icon(Icons.access_alarms, color: Colors.white, size: 35.0),
-            bottom: 0,
-            right: 0,
-          ),
-          Positioned(
-            child: Icon(Icons.nature, color: Colors.deepOrange, size: 35.0),
-            top: 0,
-            left: 0,
-          ),
-        ],
+    return AspectRatio(
+      aspectRatio: 2.0 / 1.0, //和父元素的宽高比
+      child: Container(
+        color: Colors.black38,
+        child: Stack(
+          children: const [
+            Align(
+              child: Icon(Icons.settings, color: Colors.yellow, size: 35.0),
+              alignment: Alignment.topCenter,
+            ),
+            Align(
+              child: Icon(Icons.search_sharp, color: Colors.white, size: 35.0),
+              alignment: Alignment(1, -1),
+            ),
+            Align(
+              child: Icon(Icons.mobile_friendly, color: Colors.red, size: 55.0),
+              alignment: Alignment(0, 0),
+            ),
+            Positioned(
+              child: Icon(Icons.access_alarms, color: Colors.white, size: 35.0),
+              bottom: 0,
+              right: 0,
+            ),
+            Positioned(
+              child: Icon(Icons.nature, color: Colors.deepOrange, size: 35.0),
+              top: 0,
+              left: 0,
+            ),
+          ],
+        ),
       ),
     );
   }

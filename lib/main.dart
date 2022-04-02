@@ -46,47 +46,56 @@ class MyApps extends StatelessWidget {
 class HomeContent extends StatelessWidget {
   const HomeContent({Key? key}) : super(key: key);
 
-  Widget _getListData(context, index) {
-    return Container(
-          decoration: BoxDecoration(
-            color: Colors.limeAccent,
-            border: Border.all(
-              color: Colors.red,
-              width: 5,
-            ),
-          ),
-          child: Column(
-            children: <Widget>[
-              const SizedBox(
-                height: 20, //间距
-              ),
-              Image.network(
-            listData[index]['image_url'],
-                width: 100,
-              ),
-              Text(
-            listData[index]['title'],
-                style: const TextStyle(
-                  color: Colors.amber,
-                  fontSize: 20,
-                ),
-              ),
-            ],
-          ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3, // 每行格子数目
-        mainAxisSpacing: 5,
-        crossAxisSpacing: 5,
-        childAspectRatio: 0.618, //网格宽高比
-      ),
-      itemCount: listData.length,
-      itemBuilder: _getListData,
+    return GridView.count(
+      padding: const EdgeInsets.fromLTRB(10, 15, 0, 0),
+      childAspectRatio: 1.7,
+      crossAxisCount: 2,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
+          child: Image.network(
+            'https://www.itying.com/images/flutter/1.png',
+            fit: BoxFit.cover,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
+          child: Image.network(
+            'https://www.itying.com/images/flutter/2.png',
+            fit: BoxFit.cover,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
+          child: Image.network(
+            'https://www.itying.com/images/flutter/3.png',
+            fit: BoxFit.cover,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
+          child: Image.network(
+            'https://www.itying.com/images/flutter/4.png',
+            fit: BoxFit.cover,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
+          child: Image.network(
+            'https://www.itying.com/images/flutter/5.png',
+            fit: BoxFit.cover,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
+          child: Image.network(
+            'https://www.itying.com/images/flutter/6.png',
+            fit: BoxFit.cover,
+          ),
+        ),
+      ],
     );
   }
 }

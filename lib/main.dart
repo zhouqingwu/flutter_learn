@@ -48,37 +48,40 @@ class HomeContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 2.0 / 1.0, //和父元素的宽高比
-      child: Container(
-        color: Colors.black38,
-        child: Stack(
-          children: const [
-            Align(
-              child: Icon(Icons.settings, color: Colors.yellow, size: 35.0),
-              alignment: Alignment.topCenter,
-            ),
-            Align(
-              child: Icon(Icons.search_sharp, color: Colors.white, size: 35.0),
-              alignment: Alignment(1, -1),
-            ),
-            Align(
-              child: Icon(Icons.mobile_friendly, color: Colors.red, size: 55.0),
-              alignment: Alignment(0, 0),
-            ),
-            Positioned(
-              child: Icon(Icons.access_alarms, color: Colors.white, size: 35.0),
-              bottom: 0,
-              right: 0,
-            ),
-            Positioned(
-              child: Icon(Icons.nature, color: Colors.deepOrange, size: 35.0),
-              top: 0,
-              left: 0,
-            ),
-          ],
+    return ListView(
+      children: [
+        Card(
+          color: Colors.yellow,
+          margin: const EdgeInsets.all(10),
+          child: Column(
+            children: const [
+              ListTile(
+                title: Text("张三", style: TextStyle(color: Colors.blueGrey)),
+                subtitle: Text('程序员'),
+              ),
+              ListTile(title: Text('电话：XXXXXXXX')),
+              ListTile(
+                title: Text('Email: a@g.com'),
+              )
+            ],
+          ),
         ),
-      ),
+        Card(
+          margin: const EdgeInsets.all(10),
+          child: Column(
+            children: const [
+              ListTile(
+                title: Text("里斯"),
+                subtitle: Text('销售'),
+              ),
+              ListTile(title: Text('电话：XXXXXXXX')),
+              ListTile(
+                title: Text('Email: b@g.com'),
+              )
+            ],
+          ),
+        )
+      ],
     );
   }
 }

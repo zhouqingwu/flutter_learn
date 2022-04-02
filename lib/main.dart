@@ -48,38 +48,43 @@ class HomeContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: listData.map((value) {
-        return Card(
-          margin: const EdgeInsets.all(10),
-          child: Column(
-            children: [
-              AspectRatio(
-                aspectRatio: 1,
-                child: Image.network(
-                  value['image_url'],
-                  fit: BoxFit.cover,
-                ),
-              ),
-              ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(value['image_url']),
-                  backgroundColor: Colors.blue,
-                ),
-                title: Text(value['title']),
-                subtitle: Text(value['number']),
-              ),
-              ListTile(
-                title: Text(
-                  value['image_url'],
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                ),
-              ),
-            ],
-          ),
-        );
-      }).toList(),
+    return Wrap(
+      direction: Axis.horizontal,
+      spacing: 20,
+      runSpacing: 20,
+      alignment: WrapAlignment.spaceBetween,
+      // runAlignment: WrapAlignment.end,
+      children: const [
+        MyButton('第[01]集'),
+        MyButton('第[02]集'),
+        MyButton('第[03]集'),
+        MyButton('第[04]集xxxxx'),
+        MyButton('第[05]集'),
+        MyButton('第[06]集'),
+        MyButton('第[07]集'),
+        MyButton('第[08]集'),
+        MyButton('第[09]集YYYYYY'),
+        MyButton('第[10]集'),
+        MyButton('第[11]集'),
+        MyButton('第[11]集'),
+      ],
+    );
+  }
+}
+
+class MyButton extends StatelessWidget {
+  final String buttonName;
+
+  const MyButton(this.buttonName, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      child: Text(buttonName),
+      style: const ButtonStyle(
+        alignment: Alignment.center,
+      ),
+      onPressed: () {},
     );
   }
 }

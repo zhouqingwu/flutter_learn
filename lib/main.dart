@@ -33,7 +33,7 @@ class MyApps extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Flutter Demo'),
         ),
-        body: const IconRow(),
+        body: const HomeContainer(),
       ),
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
@@ -43,44 +43,60 @@ class MyApps extends StatelessWidget {
   }
 }
 
-class IconRow extends StatelessWidget {
-  const IconRow({Key? key}) : super(key: key);
+class HomeContainer extends StatelessWidget {
+  const HomeContainer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    //or Column
-    return Row(
-      children: const [
-        Expanded(
-          flex: 2,
-          child: IconContainer(Icons.home, color: Colors.red),
+    return Column(
+      children: [
+        Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Container(
+                height: 200,
+                color: Colors.amberAccent,
+              ),
+            )
+          ],
         ),
-        Expanded(
-          flex: 1,
-          child: IconContainer(Icons.list, color: Colors.yellow),
-        ),
-        IconContainer(Icons.settings, color: Colors.blue),
+        const SizedBox(height: 10),
+        Row(
+          children: [
+            Expanded(
+              flex: 2,
+              child: SizedBox(
+                height: 200,
+                child: Image.network(
+                  getImage(1),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              flex: 1,
+              child: SizedBox(
+                height: 200,
+                child: ListView(
+                  children: [
+                    SizedBox(
+                      height: 95,
+                      child: Image.network(getImage(2), fit: BoxFit.cover),
+                    ),
+                    const SizedBox(height: 10),
+                    SizedBox(
+                      height: 95,
+                      child: Image.network(getImage(3), fit: BoxFit.cover),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        )
       ],
-    );
-  }
-}
-
-class IconContainer extends StatelessWidget {
-  final Color color;
-  final IconData icon;
-  final double size;
-
-  const IconContainer(this.icon,
-      {this.color = Colors.red, this.size = 32.0, Key? key})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      width: 50,
-      color: color,
-      child: Center(child: Icon(icon, size: size, color: Colors.white)),
     );
   }
 }

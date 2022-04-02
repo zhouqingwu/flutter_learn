@@ -25,3 +25,8 @@ List listData = [
     "image_url": 'https://cdn-icons-png.flaticon.com/512/4193/4193303.png',
   },
 ];
+
+/// get image for testing
+String getImage(int id) {
+  return 'https://www.itying.com/images/flutter/$id.png';
+}

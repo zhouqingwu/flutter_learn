@@ -33,7 +33,7 @@ class MyApps extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Flutter Demo'),
         ),
-        body: const HomeContent(),
+        body: const IconRow(),
       ),
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
@@ -43,59 +43,39 @@ class MyApps extends StatelessWidget {
   }
 }
 
-class HomeContent extends StatelessWidget {
-  const HomeContent({Key? key}) : super(key: key);
+class IconRow extends StatelessWidget {
+  const IconRow({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      padding: const EdgeInsets.fromLTRB(10, 15, 0, 0),
-      childAspectRatio: 1.7,
-      crossAxisCount: 2,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
-          child: Image.network(
-            'https://www.itying.com/images/flutter/1.png',
-            fit: BoxFit.cover,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
-          child: Image.network(
-            'https://www.itying.com/images/flutter/2.png',
-            fit: BoxFit.cover,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
-          child: Image.network(
-            'https://www.itying.com/images/flutter/3.png',
-            fit: BoxFit.cover,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
-          child: Image.network(
-            'https://www.itying.com/images/flutter/4.png',
-            fit: BoxFit.cover,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
-          child: Image.network(
-            'https://www.itying.com/images/flutter/5.png',
-            fit: BoxFit.cover,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
-          child: Image.network(
-            'https://www.itying.com/images/flutter/6.png',
-            fit: BoxFit.cover,
-          ),
-        ),
+    //or Column
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: const [
+        IconContainer(Icons.home, color: Colors.red),
+        IconContainer(Icons.list, color: Colors.yellow),
+        IconContainer(Icons.settings, color: Colors.blue),
       ],
+    );
+  }
+}
+
+class IconContainer extends StatelessWidget {
+  final Color color;
+  final IconData icon;
+  final double size;
+
+  const IconContainer(this.icon,
+      {this.color = Colors.red, this.size = 32.0, Key? key})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      width: 50,
+      color: color,
+      child: Center(child: Icon(icon, size: size, color: Colors.white)),
     );
   }
 }

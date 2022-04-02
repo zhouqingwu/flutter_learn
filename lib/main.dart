@@ -80,9 +80,10 @@ class HomeContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+        crossAxisCount: 3, // 每行格子数目
         mainAxisSpacing: 5,
         crossAxisSpacing: 5,
+        childAspectRatio: 0.618, //网格宽高比
       ),
       itemCount: listData.length,
       itemBuilder: _getListData,

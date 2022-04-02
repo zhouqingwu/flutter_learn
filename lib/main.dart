@@ -54,30 +54,46 @@ class HomeContainer extends StatelessWidget {
           color: Colors.yellow,
           margin: const EdgeInsets.all(10),
           child: Column(
-            children: const [
-              ListTile(
-                title: Text("张三", style: TextStyle(color: Colors.blueGrey)),
-                subtitle: Text('程序员'),
+            children: [
+              AspectRatio(
+                aspectRatio: 16 / 9,
+                child: Image.network(getImage(1), fit: BoxFit.cover),
               ),
-              ListTile(title: Text('电话：XXXXXXXX')),
               ListTile(
-                title: Text('Email: a@g.com'),
-              )
+                leading: ClipOval(
+                  child: Image.network(
+                    getImage(1),
+                    height: 38,
+                    width: 38,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                title: const Text(
+                  "张三",
+                  style: TextStyle(color: Colors.blueGrey),
+                ),
+                subtitle: const Text('程序员'),
+              ),
+              const ListTile(title: Text('电话：XXXXXXXX')),
             ],
           ),
         ),
         Card(
           margin: const EdgeInsets.all(10),
           child: Column(
-            children: const [
-              ListTile(
-                title: Text("里斯"),
-                subtitle: Text('销售'),
+            children: [
+              AspectRatio(
+                aspectRatio: 16 / 9,
+                child: Image.network(getImage(2), fit: BoxFit.cover),
               ),
-              ListTile(title: Text('电话：XXXXXXXX')),
               ListTile(
-                title: Text('Email: b@g.com'),
-              )
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage(getImage(2)),
+                ),
+                title: const Text("里斯"),
+                subtitle: const Text('销售'),
+              ),
+              const ListTile(title: Text('电话：XXXXXXXX')),
             ],
           ),
         )

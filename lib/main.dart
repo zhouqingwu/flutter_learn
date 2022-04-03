@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'src/settings/settings_controller.dart';
 import 'src/settings/settings_service.dart';
@@ -49,22 +51,36 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int number = 0;
+  List list = [];
+  int number = 1;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
       children: [
-        const SizedBox(height: 50),
-        Chip(label: Text("$number")),
-        ElevatedButton(
-          onPressed: () {
-            //有状态组件，变化内容
-            setState(() => number++);
-          },
-          child: const Text('Add number'),
-          style: raisedButtonStyle,
+        Column(
+          children: list.map((value) {
+            return ListTile(
+              title: Text(
+                value,
+                style: const TextStyle(
+                  backgroundColor: Colors.yellow,
+                  fontSize: 36.0,
+                ),
+              ),
+              subtitle: Text(number.toString()),
+            );
+          }).toList(),
         ),
+        ElevatedButton(
+          child: const Text('Add Number'),
+          onPressed: () {
+            setState(() {
+              list.add('Hello: ${number++}');
+            });
+          },
+          style: raisedButtonStyle,
+        )
       ],
     );
   }

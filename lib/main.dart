@@ -29,12 +29,7 @@ class MyApps extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false, // 隐藏debug
       title: 'Learn Flutter',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Demo'),
-        ),
-        body: HomePage(key: key),
-      ),
+      home: Tabs(),
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
         scaffoldBackgroundColor: const Color.fromARGB(242, 193, 253, 141),
@@ -43,45 +38,47 @@ class MyApps extends StatelessWidget {
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class Tabs extends StatefulWidget {
+  const Tabs({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<Tabs> createState() => _TabsState();
 }
 
-class _HomePageState extends State<HomePage> {
-  List list = [];
-  int number = 1;
+class _TabsState extends State<Tabs> {
+  int tabIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        Column(
-          children: list.map((value) {
-            return ListTile(
-              title: Text(
-                value,
-                style: const TextStyle(
-                  backgroundColor: Colors.yellow,
-                  fontSize: 36.0,
-                ),
-              ),
-              subtitle: Text(number.toString()),
-            );
-          }).toList(),
-        ),
-        ElevatedButton(
-          child: const Text('Add Number'),
-          onPressed: () {
-            setState(() {
-              list.add('Hello: ${number++}');
-            });
-          },
-          style: raisedButtonStyle,
-        )
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Flutter Demo'),
+      ),
+      body: Text('Tab Bar $tabIndex'),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: tabIndex,
+        iconSize: 36.0,
+        fixedColor: Colors.blue,
+        onTap: (int index) {
+          setState(() {
+            tabIndex = index;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            label: "List",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: "Settings",
+          ),
+        ],
+      ),
     );
   }
 }

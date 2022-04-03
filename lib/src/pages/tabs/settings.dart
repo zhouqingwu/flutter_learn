@@ -36,22 +36,22 @@ class _SettingsPageState extends State<SettingsPage> {
             onPressed: () => Navigator.pushNamed(
               context,
               SearchPage.routeName,
-              arguments: ScreenArguments(
-                'Search Page',
-                'Welcome to Search page',
-              ),
+              arguments: {
+                "title": 'Search one',
+                "message": "Search 11111",
+              },
             ),
-            child: const Text('Search'),
+            child: const Text('Search 1'),
           ),
           const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () => Navigator.pushNamed(
               context,
               SearchPage.routeName,
-              arguments: ScreenArguments(
-                'Search Page Second',
-                'Welcome to Second Search Page',
-              ),
+              arguments: {
+                "title": 'Search Two',
+                "message": "Search message 22222",
+              },
             ),
             child: const Text('Search 2'),
           ),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatelessWidget {
-  final String title;
-  final String message;
+  var arguments;
 
   // This Widget accepts the arguments as constructor
   // parameters. It does not extract the arguments from
@@ -10,25 +9,23 @@ class SearchPage extends StatelessWidget {
   //
   // The arguments are extracted by the onGenerateRoute
   // function provided to the MaterialApp widget.
-  const SearchPage({
-    Key? key,
-    required this.title,
-    required this.message,
-  }) : super(key: key);
+  SearchPage({Key? key, this.arguments}) : super(key: key);
+
   static const routeName = '/search';
 
   @override
   Widget build(BuildContext context) {
+    print(arguments);
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(arguments['title']),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Text('Back'),
         onPressed: () => Navigator.pop(context), //返回页面
       ),
       body: Center(
-        child: Text(message),
+        child: Text(arguments['message']),
       ),
     );
   }

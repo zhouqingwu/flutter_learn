@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../form.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -19,16 +18,7 @@ class _SettingsPageState extends State<SettingsPage> {
       child: Column(
         children: [
           ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => FormPage(
-                    title: 'Hello form one',
-                  ),
-                ),
-              );
-            },
+            onPressed: () => Navigator.pushNamed(context, '/form'),
             child: const Text('Form'),
           )
         ],

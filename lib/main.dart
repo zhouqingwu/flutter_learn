@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'src/settings/settings_controller.dart';
 import 'src/settings/settings_service.dart';
 import 'src/pages/tabs.dart';
+import 'src/pages/routes.dart';
 
 void main() async {
   // Set up the SettingsController, which will glue user settings to multiple
@@ -32,6 +33,7 @@ class MyApps extends StatelessWidget {
         primarySwatch: Colors.lightGreen,
         scaffoldBackgroundColor: const Color.fromARGB(242, 193, 253, 141),
       ),
+      routes: routes,
     );
   }
 }

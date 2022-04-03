@@ -5,6 +5,7 @@ import 'tabs/settings.dart';
 
 class Tabs extends StatefulWidget {
   const Tabs({Key? key}) : super(key: key);
+  static const routeName = '/';
 
   @override
   State<Tabs> createState() => _TabsState();

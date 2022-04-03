@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:learn/src/pages/search.dart';
 
+import '../pages/tabs.dart';
 import 'form.dart';
 import 'profile.dart';
 import 'search.dart';
 
 final routes = {
+  Tabs.routeName: (context) => const Tabs(),
   FormPage.routeName: (context, {arguments}) => FormPage(
         arguments: arguments,
       ),

@@ -28,7 +28,7 @@ class MyApps extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false, // 隐藏debug
       title: 'Learn Flutter',
-      home: const Tabs(),
+      initialRoute: Tabs.routeName, // 初始化加载多路由
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
         scaffoldBackgroundColor: const Color.fromARGB(242, 193, 253, 141),

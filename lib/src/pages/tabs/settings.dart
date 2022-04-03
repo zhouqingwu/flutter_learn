@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../form.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -12,12 +13,22 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
+      width: 600,
+      padding: const EdgeInsets.all(50),
       color: Colors.yellow,
-      child: ListView(
-        children: const [
-          ListTile(title: Text('I am Settings one')),
-          ListTile(title: Text('I am Settings two')),
-          ListTile(title: Text('I am Settings three')),
+      child: Column(
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const FormPage(),
+                ),
+              );
+            },
+            child: const Text('Form'),
+          )
         ],
       ),
     );

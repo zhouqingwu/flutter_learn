@@ -38,27 +38,7 @@ class MyApps extends StatelessWidget {
       // Use this function to identify the named
       // route being pushed, and create the correct
       // Screen.
-      onGenerateRoute: (RouteSettings settings) {
-        // 统一处理
-        final Function? pageContentBuilder = routes[settings.name];
-
-        if (pageContentBuilder != null) {
-          if (settings.arguments != null) {
-            final Route route = MaterialPageRoute(
-              builder: (context) => pageContentBuilder(
-                context,
-                arguments: settings.arguments,
-              ),
-            );
-            return route;
-          } else {
-            final Route route = MaterialPageRoute(
-                builder: (context) => pageContentBuilder(context));
-            return route;
-          }
-        }
-        return null;
-      },
+      onGenerateRoute: onGenerateRoute,
     );
   }
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class FormPage extends StatelessWidget {
-  const FormPage({Key? key}) : super(key: key);
+  String title;
+  FormPage({Key? key, this.title = "form"}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,11 +10,15 @@ class FormPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Form 表单页面'),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: const Text('Back'),
+        onPressed: () => Navigator.pop(context), //返回页面
+      ),
       body: ListView(
-        children: const [
+        children: [
           ListTile(
-            title: Text('I am a form'),
-          )
+            title: Text('I am a $title'),
+          ),
         ],
       ),
     );

@@ -23,7 +23,9 @@ class _SettingsPageState extends State<SettingsPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const FormPage(),
+                  builder: (context) => FormPage(
+                    title: 'Hello form one',
+                  ),
                 ),
               );
             },

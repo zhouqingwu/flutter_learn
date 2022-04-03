@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import '../../res/list_data.dart';
 
 class FormPage extends StatelessWidget {
-  String title;
-  FormPage({Key? key, this.title = "form"}) : super(key: key);
+  const FormPage({Key? key}) : super(key: key);
+
+  static const routeName = '/form';
 
   @override
   Widget build(BuildContext context) {
+    // Extract the arguments from the current ModalRoute
+    // settings and cast them as ScreenArguments.
+    final args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Form 表单页面'),
+        title: Text(args.title),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Text('Back'),
@@ -17,7 +23,8 @@ class FormPage extends StatelessWidget {
       body: ListView(
         children: [
           ListTile(
-            title: Text('I am a $title'),
+            title: Text('I am a ${args.message}'),
+            subtitle: Text(args.message),
           ),
         ],
       ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:learn/res/list_data.dart';
+import 'package:learn/src/pages/form.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -18,7 +20,14 @@ class _SettingsPageState extends State<SettingsPage> {
       child: Column(
         children: [
           ElevatedButton(
-            onPressed: () => Navigator.pushNamed(context, '/form'),
+            onPressed: () => Navigator.pushNamed(
+              context,
+              FormPage.routeName,
+              arguments: ScreenArguments(
+                'Form Page',
+                'Welcome to form page',
+              ),
+            ),
             child: const Text('Form'),
           )
         ],

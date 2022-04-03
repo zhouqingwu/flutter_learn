@@ -2,6 +2,6 @@ import 'form.dart';
 import 'profile.dart';
 
 final routes = {
-  '/form': (context) => FormPage(),
+  FormPage.routeName: (context) => const FormPage(),
   '/profile': (context) => const ProfilePage(),
 };

@@ -5,6 +5,7 @@ import '../pages/tabs.dart';
 import 'form.dart';
 import 'profile.dart';
 import 'search.dart';
+import 'list_info.dart';
 
 final routes = {
   Tabs.routeName: (context) => const Tabs(),
@@ -12,6 +13,9 @@ final routes = {
         arguments: arguments,
       ),
   SearchPage.routeName: (context, {arguments}) => SearchPage(
+        arguments: arguments,
+      ),
+  ListInfoPage.routeName: (contet, {arguments}) => ListInfoPage(
         arguments: arguments,
       ),
   '/profile': (context) => const ProfilePage(),

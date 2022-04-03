@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'src/settings/settings_controller.dart';
 import 'src/settings/settings_service.dart';
@@ -33,7 +31,7 @@ class MyApps extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Flutter Demo'),
         ),
-        body: const HomeContainer(),
+        body: HomePage(key: key),
       ),
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
@@ -43,48 +41,31 @@ class MyApps extends StatelessWidget {
   }
 }
 
-class HomeContainer extends StatelessWidget {
-  const HomeContainer({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Wrap(
-      direction: Axis.horizontal,
-      spacing: 20,
-      runSpacing: 20,
-      alignment: WrapAlignment.spaceBetween,
-      // runAlignment: WrapAlignment.end,
-      children: const [
-        MyButton('第[01]集'),
-        MyButton('第[02]集'),
-        MyButton('第[03]集'),
-        MyButton('第[04]集xxxxx'),
-        MyButton('第[05]集'),
-        MyButton('第[06]集'),
-        MyButton('第[07]集'),
-        MyButton('第[08]集'),
-        MyButton('第[09]集YYYYYY'),
-        MyButton('第[10]集'),
-        MyButton('第[11]集'),
-        MyButton('第[11]集'),
-      ],
-    );
-  }
+  State<HomePage> createState() => _HomePageState();
 }
 
-class MyButton extends StatelessWidget {
-  final String buttonName;
-
-  const MyButton(this.buttonName, {Key? key}) : super(key: key);
+class _HomePageState extends State<HomePage> {
+  int number = 0;
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      child: Text(buttonName),
-      style: const ButtonStyle(
-        alignment: Alignment.center,
-      ),
-      onPressed: () {},
+    return Column(
+      children: [
+        const SizedBox(height: 50),
+        Chip(label: Text("$number")),
+        ElevatedButton(
+          onPressed: () {
+            //有状态组件，变化内容
+            setState(() => number++);
+          },
+          child: const Text('Add number'),
+          style: raisedButtonStyle,
+        ),
+      ],
     );
   }
 }

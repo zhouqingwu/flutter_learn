@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:learn/res/list_data.dart';
+import 'package:learn/src/pages/search.dart';
 import 'src/settings/settings_controller.dart';
 import 'src/settings/settings_service.dart';
 import 'src/pages/tabs.dart';
@@ -34,6 +36,28 @@ class MyApps extends StatelessWidget {
         scaffoldBackgroundColor: const Color.fromARGB(242, 193, 253, 141),
       ),
       routes: routes,
+      // Provide a function to handle named routes.
+      // Use this function to identify the named
+      // route being pushed, and create the correct
+      // Screen.
+      onGenerateRoute: (settings) {
+        if (settings.name == SearchPage.routeName) {
+          // Cast the arguments to the correct
+          // type: ScreenArguments.
+          final args = settings.arguments as ScreenArguments;
+
+          // Then, extract the required data from the arguments
+          // and pass the data to the correct screen .
+          return MaterialPageRoute(
+            builder: (context) {
+              return SearchPage(
+                title: args.title,
+                message: args.message,
+              );
+            },
+          );
+        }
+      },
     );
   }
 }

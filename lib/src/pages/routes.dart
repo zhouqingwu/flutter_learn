@@ -1,3 +1,5 @@
+import 'package:learn/src/pages/search.dart';
+
 import 'form.dart';
 import 'profile.dart';
 

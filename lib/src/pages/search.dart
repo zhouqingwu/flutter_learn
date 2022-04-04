@@ -21,8 +21,10 @@ class SearchPage extends StatelessWidget {
         title: Text(arguments['title']),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Text('Back'),
-        onPressed: () => Navigator.pop(context), //返回页面
+        child: const Text('Home'),
+        // onPressed: () => Navigator.pop(context), //返回页面
+        onPressed: () =>
+            Navigator.pushReplacementNamed(context, '/profile'), //返回指定页面
       ),
       body: Center(
         child: Text(arguments['message']),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn/src/pages/tabs.dart';
 
 class SearchPage extends StatelessWidget {
   var arguments;
@@ -23,8 +24,14 @@ class SearchPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: const Text('Home'),
         // onPressed: () => Navigator.pop(context), //返回页面
-        onPressed: () =>
-            Navigator.pushReplacementNamed(context, '/profile'), //返回指定页面
+        //  onPressed: () => Navigator.pushReplacementNamed(context, '/profile'), //返回指定页面
+        onPressed: () {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => const Tabs()),
+            (route) => false,
+          );
+        },
       ),
       body: Center(
         child: Text(arguments['message']),

@@ -4,11 +4,14 @@ import 'tabs/list.dart';
 import 'tabs/settings.dart';
 
 class Tabs extends StatefulWidget {
-  const Tabs({Key? key}) : super(key: key);
+  // ignore: prefer_typing_uninitialized_variables
+  final int index;
+  const Tabs({Key? key, this.index = 0}) : super(key: key);
   static const routeName = '/';
 
   @override
-  State<Tabs> createState() => _TabsState();
+  // ignore: no_logic_in_create_state
+  State<Tabs> createState() => _TabsState(index);
 }
 
 class _TabsState extends State<Tabs> {
@@ -18,6 +21,10 @@ class _TabsState extends State<Tabs> {
     ListPage(),
     SettingsPage(),
   ];
+
+  _TabsState(index) {
+    _currentIndex = index;
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -24,11 +24,11 @@ class SearchPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: const Text('Home'),
         // onPressed: () => Navigator.pop(context), //返回页面
-        //  onPressed: () => Navigator.pushReplacementNamed(context, '/profile'), //返回指定页面
+        // onPressed: () => Navigator.pushReplacementNamed(context, '/'), //返回指定页面
         onPressed: () {
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => const Tabs()),
+            MaterialPageRoute(builder: (context) => const Tabs(index: 1)),
             (route) => false,
           );
         },
